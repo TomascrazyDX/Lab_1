@@ -30,6 +30,9 @@ public class BoidSimulationControl : MonoBehaviour
         {
             GameObject newBoid = Instantiate(boidPrefab, new Vector3(Random.Range(-0.7f, 0.7f), Random.Range(0, 0.7f), Random.Range(-0.4f, 0.4f)), Random.rotation);
             boids.Add(newBoid.GetComponent<Boid>());
+            newBoid.GetComponent<Rigidbody>().linearVelocity = Random.onUnitSphere * 0.3f;
+            
+            newBoid.transform.localScale *= Random.Range(0.9f, 3f);
         }
 
         //spawn the boids

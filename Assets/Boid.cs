@@ -27,6 +27,14 @@ public class Boid : MonoBehaviour
     {
         //oeiwnt toward velocity
         transform.forward = rigidBody.linearVelocity;
+
+        float speed = rigidBody.linearVelocity.magnitude;
+
+        if (speed > speedMax)
+        {
+            //enforce  a top speed
+            rigidBody.linearVelocity = rigidBody.linearVelocity.normalized * speedMax / speed;
+        }
     }
     public Vector3 Seek(Vector3 target, float acceleration)
     {
@@ -40,7 +48,9 @@ public class Boid : MonoBehaviour
         Vector3 accel = toTargetNormalized * acceleration;
 
         return accel;
+
     }
+
 
 
 
